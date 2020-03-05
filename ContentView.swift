@@ -9,8 +9,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) var context
+    @FetchRequest(entity: Symptom.entity(), sortDescriptors: []) var symptoms: FetchedResults<Symptom>
+    
+    @State private var showingAddSymptomView = false
+    
+    
     var body: some View {
-        Text("Hello, World!")
+        NavigationView {
+            
+            SymptomView()
+                .navigationBarTitle("Symptoms")
+                .navigationBarItems(trailing:
+                    NavigationLink(destination: AddSymptomView(context: self.context)) {
+                        Text("Add")
+                }
+            )
+        }
     }
 }
 
