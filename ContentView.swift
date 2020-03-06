@@ -16,16 +16,32 @@ struct ContentView: View {
     
     
     var body: some View {
-        NavigationView {
+        
+        TabView {
             
-            SymptomView()
-                .navigationBarTitle("Symptoms")
-                .navigationBarItems(trailing:
-                    NavigationLink(destination: AddSymptomView(context: self.context)) {
-                        Text("Add")
-                }
-            )
-        }
+            NavigationView {
+                SymptomView()
+                    .navigationBarTitle("Symptoms")
+                    .navigationBarItems(trailing:
+                        NavigationLink(destination: AddSymptomView(context: self.context)) {
+                            Text("Add")
+                        }
+                )
+            } // NavigationView
+                .tabItem {
+                    Image(systemName: "1.circle")
+                    Text("Symptoms")
+            }.tag(0)
+            
+            
+            Text("SecondView")
+                .tabItem {
+                    Image(systemName: "2.circle")
+                    Text("Statistics")
+            }.tag(1)
+            
+        } // Tab View
+        
     }
 }
 
