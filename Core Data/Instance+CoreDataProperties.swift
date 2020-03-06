@@ -11,7 +11,6 @@ import Foundation
 import CoreData
 import SwiftUI
 
-
 extension Instance {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Instance> {
@@ -96,13 +95,4 @@ extension Instance {
         
         return "No Time"
     }
-    
-    
-//    public var instanceArray: [Instance] {
-//        let set = instances as? Set<Instance> ?? []
-//        return set.sorted {
-//            $0.dateTime! < $1.dateTime!
-//        }
-//    }
-    
 }

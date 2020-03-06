@@ -14,7 +14,6 @@ struct FilteredInstanceList: View {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var body: some View {
-        
         ForEach(fetchRequest.wrappedValue, id: \.self) { instance in
             HStack {
                 InstanceCell(instance: instance)
@@ -40,6 +39,5 @@ struct FilteredInstanceList: View {
             print(error.localizedDescription)
         }
     }
-    
 }
 

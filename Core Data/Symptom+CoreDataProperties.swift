@@ -36,25 +36,17 @@ extension Symptom {
         }
     }
     
-    
     public var instanceArray2: [Instance] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Instance")
         let predicate    = NSPredicate(format: "symptomId = %@", self.id!)
         let context      = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
-        
         fetchRequest.predicate = predicate
-
         let records = try! context.fetch(fetchRequest) as! [Instance]
         return records
-        
-        
-        
     }
-    
-    
-    
 }
+
 
 // MARK: Generated accessors for instances
 extension Symptom {

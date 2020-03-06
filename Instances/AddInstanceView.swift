@@ -58,7 +58,6 @@ struct AddInstanceView: View {
     }
     
     
-    
     func addInstance() {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
@@ -87,8 +86,5 @@ struct AddInstanceView: View {
             self.presentationMode.wrappedValue.dismiss()
         }
     }
-    
-    
-    
 }
 

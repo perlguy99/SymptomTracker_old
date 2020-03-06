@@ -18,14 +18,12 @@ struct InstanceView: View {
     }
     
     var body: some View {
-        
         if fetchRequest.wrappedValue.count > 0 {
             return AnyView(InstanceListView(symptom: symptom))
         }
         
         return AnyView(EmptyInstanceView(symptom: symptom))
     }
-
 }
 
 

@@ -14,7 +14,6 @@ struct ContentView: View {
     
     @State private var showingAddSymptomView = false
     
-    
     var body: some View {
         
         TabView {
