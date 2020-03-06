@@ -55,14 +55,16 @@ struct AddInstanceView: View {
                 }
             }
         }
-        
     }
     
     
     
     func addInstance() {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
         let instance = Instance(context: context)
-        instance.id = UUID()
+        instance.id        = UUID()
+        instance.symptomId = symptom.id
         
         if !note.isEmpty {
             instance.note = note

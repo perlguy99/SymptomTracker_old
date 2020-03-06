@@ -24,6 +24,7 @@ extension Instance {
     @NSManaged public var trigger: String?
     @NSManaged public var severity: String?
     @NSManaged public var ofSymptom: Symptom?
+    @NSManaged public var symptomId: UUID?
 
     public var stringDateTime: String {
         let formatter = DateFormatter()
@@ -96,5 +97,12 @@ extension Instance {
         return "No Time"
     }
     
+    
+//    public var instanceArray: [Instance] {
+//        let set = instances as? Set<Instance> ?? []
+//        return set.sorted {
+//            $0.dateTime! < $1.dateTime!
+//        }
+//    }
     
 }

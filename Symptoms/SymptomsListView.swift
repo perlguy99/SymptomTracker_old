@@ -10,8 +10,7 @@ import SwiftUI
 
 struct SymptomsListView: View {
     @Environment(\.managedObjectContext) var context
-    @FetchRequest(entity: Symptom.entity(), sortDescriptors: []) var symptoms: FetchedResults<Symptom>
-
+    @FetchRequest(entity: Symptom.entity(), sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)]) var symptoms: FetchedResults<Symptom>
     
     var body: some View {
         List {
@@ -36,7 +35,6 @@ struct SymptomsListView: View {
             print(error.localizedDescription)
         }
     }
-    
 }
 
 struct SymptomsListView_Previews: PreviewProvider {

@@ -6,7 +6,7 @@
 //  Copyright © 2020 Perlguy, Inc. All rights reserved.
 //
 //
-
+import SwiftUI
 import Foundation
 import CoreData
 
@@ -25,6 +25,9 @@ extension Symptom {
         name ?? ""
     }
     
+    public var wrappedId: UUID {
+        id ?? UUID()
+    }
     
     public var instanceArray: [Instance] {
         let set = instances as? Set<Instance> ?? []
@@ -32,6 +35,25 @@ extension Symptom {
             $0.dateTime! < $1.dateTime!
         }
     }
+    
+    
+    public var instanceArray2: [Instance] {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Instance")
+        let predicate    = NSPredicate(format: "symptomId = %@", self.id!)
+        let context      = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        
+        fetchRequest.predicate = predicate
+
+        let records = try! context.fetch(fetchRequest) as! [Instance]
+        return records
+        
+        
+        
+    }
+    
+    
+    
 }
 
 // MARK: Generated accessors for instances
@@ -49,4 +71,9 @@ extension Symptom {
     @objc(removeInstances:)
     @NSManaged public func removeFromInstances(_ values: NSSet)
 
+}
+
+
+extension UUID: CVarArg {
+    
 }

@@ -10,9 +10,16 @@ import SwiftUI
 
 struct InstanceView: View {
     let symptom: Symptom
+    var fetchRequest: FetchRequest<Instance>
+    
+    init(symptom: Symptom) {
+        self.symptom = symptom
+        fetchRequest = FetchRequest<Instance>(entity: Instance.entity(), sortDescriptors: [], predicate: NSPredicate(format: "symptomId = %@", self.symptom.wrappedId))
+    }
     
     var body: some View {
-        if symptom.instanceArray.count > 0 {
+        
+        if fetchRequest.wrappedValue.count > 0 {
             return AnyView(InstanceListView(symptom: symptom))
         }
         
